@@ -1,5 +1,4 @@
 ﻿#include <windows.h>
-#include <windowsx.h> // Static_SetText 等のマクロ用
 #include <commctrl.h>
 #include "resource.h"
 #include <string>
