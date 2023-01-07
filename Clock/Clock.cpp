@@ -21,9 +21,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ShowWindow(hDlg, nCmdShow);
     InvalidateRect(hDlg, NULL, true);
 
-    BOOL ret;
     MSG msg;
-    while ((ret = GetMessage(&msg, NULL, 0, 0)) > 0) {
+    while (GetMessage(&msg, NULL, 0, 0) > 0) {
         // ダイアログボックス上でのメッセージだけを仕分け
         if (!IsDialogMessage(hDlg, &msg)) {
             TranslateMessage(&msg);
@@ -100,7 +99,7 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
         switch (LOWORD(wParam)) {
         case IDC_COMBO1:
             if (HIWORD(wParam) == CBN_SELCHANGE) {
-                int index = SendDlgItemMessage(hDlg, IDC_COMBO1, CB_GETCURSEL, 0, 0);
+                int index = (int)SendDlgItemMessage(hDlg, IDC_COMBO1, CB_GETCURSEL, 0, 0);
                 DeleteObject(hFont);
                 hFont = CreateFont(
                     minFontSize + fontSizeDelta * index, // フォントの高さ(大きさ)。
