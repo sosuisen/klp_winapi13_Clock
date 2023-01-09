@@ -63,9 +63,8 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
         // 1秒ごとにタイマー呼び出し
         SetTimer(hDlg, 1, 1000, NULL);
 
-        // トラックバー（Slider Control）の初期化
-        // 指定のダイアログボックス内のコントロールへメッセージを送る
         for (int size = minFontSize; size <= maxFontSize; size += fontSizeDelta) {
+            // 指定のダイアログボックス内のコントロールへメッセージを送る
             SendDlgItemMessage(hDlg,
                 IDC_COMBO1,
                 CB_ADDSTRING,
