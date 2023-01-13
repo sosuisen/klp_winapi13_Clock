@@ -132,7 +132,7 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
         RECT rc = { 10, 50, 450, 300 };
 
         DrawText(hdc, strClock.c_str(), -1, &rc, DT_CENTER | DT_VCENTER);
-            EndPaint(hDlg, &ps);               // 描画終了
+        EndPaint(hDlg, &ps);               // 描画終了
         return TRUE;
     }
     case WM_CLOSE:
