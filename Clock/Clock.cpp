@@ -10,8 +10,7 @@ INT_PTR CALLBACK DialogProc(HWND, UINT, WPARAM, LPARAM);
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nCmdShow)
 {
-    HWND hDlg;
-    hDlg = CreateDialog(
+    HWND hDlg = CreateDialog(
         hInstance,
         MAKEINTRESOURCE(IDD_DIALOG1),
         NULL, // 親ウィンドウはなし
