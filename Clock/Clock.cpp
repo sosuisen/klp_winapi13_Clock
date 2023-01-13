@@ -55,7 +55,7 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
         SetTextColor(((HDC)wParam), RGB(200, 0, 0));//文字の色
         return (LRESULT)bkColorBrush;
     case WM_INITDIALOG: {
-        // 1秒ごとにタイマー呼び出し
+        // 1秒ごとに WM_TIMER 送信
         SetTimer(hDlg, 1, 1000, NULL);
 
         for (int size = minFontSize; size <= maxFontSize; size += fontSizeDelta) {
