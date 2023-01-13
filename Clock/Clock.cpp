@@ -64,7 +64,7 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 IDC_COMBO1,
                 CB_ADDSTRING,
                 0,
-                (LPARAM)std::format(L"{:d}", size).c_str());
+                (LPARAM)std::format(L"{}", size).c_str());
         }
 
         // maxFontSizeを選択
