@@ -39,9 +39,9 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     static HBRUSH bkColorBrush = CreateSolidBrush(RGB(240, 255, 240)); //背景色のブラシを用意
 
-    int minFontSize = 60;
-    int maxFontSize = 120;
-    int fontSizeDelta = 10;
+    const int minFontSize = 60;
+    const int maxFontSize = 120;
+    const int fontSizeDelta = 10;
 
     static bool is24h = true;
     static HFONT hAmPmFont;
@@ -219,6 +219,7 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
         return TRUE;
     case WM_DESTROY:
         DeleteObject(hFont);
+        KillTimer(hDlg, 1);
         DeleteObject(hAmPmFont);
         PostQuitMessage(0);
         return TRUE;
