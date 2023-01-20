@@ -10,8 +10,7 @@ INT_PTR CALLBACK DialogProc(HWND, UINT, WPARAM, LPARAM);
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nCmdShow)
 {
-    HWND hDlg;
-    hDlg = CreateDialog(
+    HWND hDlg = CreateDialog(
         hInstance,
         MAKEINTRESOURCE(IDD_DIALOG1),
         NULL, // 親ウィンドウはなし
@@ -40,9 +39,9 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     static HBRUSH bkColorBrush = CreateSolidBrush(RGB(240, 255, 240)); //背景色のブラシを用意
 
-    int minFontSize = 60;
-    int maxFontSize = 120;
-    int fontSizeDelta = 10;
+    const int minFontSize = 60;
+    const int maxFontSize = 120;
+    const int fontSizeDelta = 10;
 
     static bool is24h = true;
     static HFONT hAmPmFont;
@@ -60,7 +59,7 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
         SetTextColor(((HDC)wParam), RGB(200, 0, 0));//文字の色
         return (LRESULT)bkColorBrush;
     case WM_INITDIALOG: {
-        // 1秒ごとにタイマー呼び出し
+        // 1秒ごとにWM_TIMERを送信
         SetTimer(hDlg, 1, 1000, NULL);
 
         for (int size = minFontSize; size <= maxFontSize; size += fontSizeDelta) {
@@ -221,6 +220,7 @@ INT_PTR CALLBACK DialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
         return TRUE;
     case WM_DESTROY:
         DeleteObject(hFont);
+        KillTimer(hDlg, 1);
         DeleteObject(hAmPmFont);
         PostQuitMessage(0);
         return TRUE;
